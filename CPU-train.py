@@ -79,3 +79,10 @@ print(f"\n⏱️ Total Training Time: {elapsed_time / 60:.2f} minutes")
 
 from tensorflow.keras.applications import MobileNetV2
 base_model = MobileNetV2(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
+
+
+# normalize : 
+from tensorflow.keras.applications.inception_v3 import preprocess_input
+X_train = preprocess_input(X_train)
+X_val = preprocess_input(X_val)
+#Rescaling from [0,255] to [-1, 1] (specific to InceptionV3)
